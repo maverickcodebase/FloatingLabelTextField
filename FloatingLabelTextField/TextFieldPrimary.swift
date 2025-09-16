@@ -63,12 +63,16 @@ struct TextFieldPrimary: View {
                 }
             }
             .textFieldStyle(DefaultTextFieldStyle())
-            .focusablePadding(.all)
+            .padding(.all)
             .focused($isFocused)
             .disableAutocorrection(true)
             .font(.subheadline)
             .accentColor(Color(.main))
             .overlay(borderOverlay)
+            .contentShape(Rectangle())
+            .onTapGesture {
+                isFocused = true
+            }
             .onChange(of: text) { _, _ in
                 validate()
             }
